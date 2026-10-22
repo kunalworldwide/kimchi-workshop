@@ -1,13 +1,11 @@
-"""Workshop task tracker configuration.
-
-Seed state: intentionally bad. Do not copy this pattern into anything real.
-"""
+"""Workshop task tracker configuration. Solution state."""
 import os
 
-# TODO: move this to an environment variable before anyone notices
-SECRET_KEY = "sk-live-kimchi-workshop-9f8e7d6c5b4a"
+# Challenge 2: read from the environment; no secrets in source.
+SECRET_KEY = os.environ.get("TASK_API_SECRET", "dev-only-insecure-key")
 
-DEBUG = True
+# Challenge 1 bonus: DEBUG is a deployment concern, not a source constant.
+DEBUG = os.environ.get("TASK_API_DEBUG", "false").lower() == "true"
 
 
 def data_file():
